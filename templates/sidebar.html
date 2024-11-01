@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static tailwind_tags %}
+    {% tailwind_css %}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    
+      .hidden {
+          transform: translateX(-100%);
+          opacity: 0;
+          pointer-events: none; 
+      }
+  </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <div class="flex h-screen">
+         <!-- Toggle Button -->
+         <button id="toggleSidebar" class="absolute top-7 left-19 z-50 p-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-5 w-5">
+                <path d="M3 12h18m-9-9v18" />
+            </svg>
+          </button>
+
+        <div id="sidebar" class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 w-1/4 p-4 shadow-xl shadow-blue-gray-900/5 transition-transform duration-300 ease-in-out">
+            <a href="{% url 'HRMS:home' %}">
+                <div class="mb-2 p-4">
+                    <h5 class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
+                        HRIS</h5>
+                </div>
+            </a>
+            <nav class="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
+                <a href="{% url 'HRMS:employees_view' %}">
+                    <div class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100">
+                        <div class="grid place-items-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                                <path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/>
+                            </svg>
+                        </div>
+                        Employees
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100">
+                        <div class="grid place-items-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                                <path d="M3 3h18v18H3z"/>
+                            </svg>
+                        </div>
+                        BOM Related Reports
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100">
+                        <div class="grid place-items-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                                <path d="M12 2l8 8-8 8-8-8z"/>
+                            </svg>
+                        </div>
+                        Region Related Reports
+                    </div>
+                </a>
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M12 0l-12 6v12l12 6 12-6V6z"/>
+                      </svg>
+                    </div>
+                    Branch Related Reports
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M5 3h14l-1.5 9H6.5L5 3zm0 12h14l1.5 6H3.5L5 15z"/>
+                      </svg>
+                    </div>
+                    Transfer Posting Related
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M8 4h8v16H8z"/>
+                      </svg>
+                    </div>
+                    Contract Renewal Related
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M12 0l-10 10h3v10h14V10h3z"/>
+                      </svg>
+                    </div>
+                    Designation Related
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M12 0c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22c-5.5 0-10-4.5-10-10S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+                      </svg>
+                    </div>
+                    Retirement Related
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M12 2l-2 5H4v2h5l2 5 2-5h5V7h-5z"/>
+                      </svg>
+                    </div>
+                    Legal Cases Related
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M3 5v14h18V5H3zm16 12H5V7h14v10z"/>
+                      </svg>
+                    </div>
+                    Leave Management Related
+                  </div>
+                </a>
+        
+                <a href="">
+                  <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-100 focus:bg-blue-100 active:bg-gray-100 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                    <div class="grid place-items-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6 text-gray-700 hover:text-blue-600">
+                        <path d="M12 0l-3.1 9H0v2h9l3.1 9L12 24l3.1-9h9V9h-9L12 0z"/>
+                      </svg>
+                    </div>
+                    Performance Reviews
+                  </div>
+                </a>
+        
+            </nav>
+        </div>
+
+        <div class="flex-1 p-4 overflow-y-auto">
+            {% block content %}
+            <h1 class="text-2xl font-bold">Main Content Area</h1>
+            <p>Your main content goes here.</p>
+            {% endblock content %}
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
